@@ -1,31 +1,20 @@
 pipeline {
-   // agent defines where the pipeline will run.
-   agent {
-       //Here we define that we wish to run on the agent with the label Node
-   label "node1"
-}
+  agent any
 stages {
- stage('Declarative Checkout SCM')
-{
- steps 
-    {
-	   echo 'Checkout SCM'
+    stage ('greeting') {
+	   steps {
+	         echo  'good morning'
+	   }
     }
-}
- stage('creation of the folder')
-     {
-	steps
-	{
-		sh 'cd /home/ubuntu; sudo mkdir testfolder3'
-	}
-}
- stage('creating the folder on different server')
-    {
-	steps {
-		label ('my slave')
-	
-	    sh 'cd /home/ubuntu; sudo mkdir jenkins2'
-		}
-	}
-}
-}
+    stage ('creation of the folder')
+        steps {
+            sh 'cd /home/ubuntu; sudo mkdir naveen'
+        }
+    }
+    stage ('creation of the another folder') {
+        steps {
+            sh 'cd /home/ubuntu; sudo mkdir yadav'
+        }
+    }
+  } 
+}  
